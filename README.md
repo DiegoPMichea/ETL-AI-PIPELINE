@@ -34,6 +34,34 @@ This project involves the preprocessing and analysis of IoT malware capture data
      pip install -r requirements.txt
      ```
 
+## Google Cloud Services
+
+This project utilizes several Google Cloud Services to manage and process the data:
+
+### Google Cloud Functions
+
+Google Cloud Functions are used to run serverless functions that handle specific tasks such as data processing and triggering events. The `main.py` file in the `Function source GCloud/` directory contains the code for these functions.
+
+### Cloud SQL PostgreSQL
+
+Cloud SQL PostgreSQL is used to store the results of the analysis.
+
+### Cloud Storage
+
+Google Cloud Storage is used to store the processed data files and trigger the function. The dataset files are uploaded to a Cloud Storage bucket, and the processed CSV file (`iot23_combined.csv`) is also stored here for easy access and sharing.
+
+### Workflow
+
+1. **Data Upload**:
+   - Data files are uploaded to a Cloud Storage bucket.
+
+2. **Data Processing**:
+   - Google Cloud Functions are triggered to process the data files.
+   - The processed results are stored in a Cloud SQL PostgreSQL instance.
+
+3. **Data Access**:
+   - The processed CSV file is stored in Cloud Storage for easy access.
+
 ## Dataset
 
 The dataset contains labeled connection logs from various IoT malware capture scenarios. Each `conn.log.labeled` file includes fields such as timestamp, unique ID, source IP, source port, destination IP, destination port, protocol, service, duration, bytes sent, bytes received, connection state, and labels indicating whether the connection is benign or malicious.
